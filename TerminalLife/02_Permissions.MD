@@ -86,6 +86,7 @@ We will want to install the following packages:
 * unzip
 * git
 * python3
+* bats
 * shellcheck
 
 To do this, we'll use the `install` command as part of `apt`:
