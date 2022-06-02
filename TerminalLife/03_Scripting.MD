@@ -78,7 +78,7 @@ jakegt1@soulcatcher:~/projects/HowToLinux/03_Scripting$ ./test.sh
 2 tests, 2 failures
 ```
 
-# concat_two_strings.sh
+## concat_two_strings.sh
 
 Let's view [concat_two_strings.sh](../03_Scripting/concat_two_strings.sh).
 
@@ -116,7 +116,7 @@ It may look slightly odd that the result comes straight before your terminal lin
 
 After this, `./test.sh` should report one pass.
 
-# add.sh
+## add.sh
 
 So, now we need to add. Doing maths in bash can be done by using `$(())`. So, for example:
 
@@ -129,3 +129,94 @@ echo -n "$SOME_MATHS"
 
 So, overall should be similar to `concat_two_strings.sh` - just with a little bit extra. You can use variables in `$(())` too, of course.
 
+Ok, but what if we want to add many things. Adding two things isn't great, let's add as many as possible.
+
+For this, we can use a for loop:
+
+```bash
+for var in "$@" # Loop over all the arguments, other than $0
+do
+    echo "$var"
+done
+```
+
+Using this, you should be able to make `add.sh` accept any number of arguments. use `test_2.sh` to verify you've got it right.
+
+If you are struggling at any time, you can view the solutions in the solutions folder.
+
+## Extra stuff
+
+Some extra stuff can be seen here:
+
+`If statement`
+```bash
+NUMBER=1
+STRING=mystring
+
+if [ "$NUMBER" -eq 1 ]; then
+    echo "My number is 1"
+else
+    echo "My number, it is not 1."
+fi
+
+if [ "$STRING" = "mystring" ]; then
+    echo "My string is mystring"
+elif [ "$STRING" = "Something else" ]; then
+    echo "My string is something else"
+fi
+```
+
+`Using results of other commands in your scripts`
+
+```bash
+ADD_1=$(./add.sh 1 1)
+ADD_2=$(./add.sh 2 2)
+
+RESULT=$(./add.sh $ADD_1 $ADD_2)
+
+echo -n "$RESULT" # 6
+```
+
+`Writing to files`
+
+```bash
+echo "Overwrite file" > myfile
+echo "Append to file" >> myfile
+cat myfile
+Overwrite file
+Append to file
+```
+
+## Pipes
+
+Something very important in bash, is pipes. I will use an example with a program called sed:
+
+```bash
+jakegt1@soulcatcher:~$ echo "Hello World" | sed 's/Hello/Goodbye Cruel/g'
+Goodbye Cruel World
+jakegt1@soulcatcher:~$
+```
+
+With pipes, you can take the output of a program and then send it to the next program. It's not acutally as simple as it sounds, as it depends on the second program accepting the input - it's not a normal argument. This should be a pretty simple example of it though.
+
+I can't explain it much more, as to be honest it's something you'll just pick up as you go along. At the start it kinda seems like black magic. It's not.
+
+## Ending Comments
+
+This is as much as i think is worth doing, and otherwise you're probably better off just googling, or learning by yourself. One last comment i will make is:
+
+# Learn the VI/VIM Editor.
+
+You can view this by just typing `vim` in your terminal. Don't do anything yet, but just press `ESC` and then type `:q` and enter to exit. I hope that you did.
+
+VSCode has a very good set of vim bindings, and i would recommend enabling them and trying to get your head around it. Sometimes you won't have a GUI, and in these times you'll have to use `vim`.
+
+The simplest things i will tell you are:
+
+* Pressing `a` will allow you to write text
+* You can navigate via arrow keys or `hjkl`. `hjkl` is for high level chads. I am not one of them.
+* You can press `ESC` or `ctrl+c` then `:` to get you to vim's command line. You can see what command you are entering at the bottom left. If it goes to shit, just press ESC again and get rid of that crap. Then start again.
+* `:100` gets you to line 100, `:1` gets you to line 1
+* `shift + g` (also described as `G`) gets you to the end of the document. `gg` gets you to the start of the document.
+
+The rest you can find by searching `vim cheat sheet` into google. Once again, this is something you can only really learn by doing. I highly recommend it though - once you get good enough you will find it's a lot easier to navigate large code bases!

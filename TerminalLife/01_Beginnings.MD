@@ -97,6 +97,26 @@ jakegt1@soulcatcher:~$ pwd
 /home/jakegt1
 ```
 
+`cat` - Concatanate files together (typically used just to read files)
+```
+jakegt1@soulcatcher:~$ cat /etc/lsb-release
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=20.04
+DISTRIB_CODENAME=focal
+DISTRIB_DESCRIPTION="Ubuntu 20.04.4 LTS"
+```
+
+`rm` - Remove files and `touch`, create empty files
+```
+jakegt1@soulcatcher:~$ touch afile
+jakegt1@soulcatcher:~$ ls afile
+afile
+jakegt1@soulcatcher:~$ rm afile
+jakegt1@soulcatcher:~$ ls afile
+ls: cannot access 'afile': No such file or directory
+jakegt1@soulcatcher:~$
+```
+
 ## Environment Variables
 
 In BASH, you have two types of variables (this is probably simplifying stuff, but it makes sense to view it this way
