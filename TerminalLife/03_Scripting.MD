@@ -78,6 +78,8 @@ jakegt1@soulcatcher:~/projects/HowToLinux/03_Scripting$ ./test.sh
 2 tests, 2 failures
 ```
 
+# concat_two_strings.sh
+
 Let's view [concat_two_strings.sh](../03_Scripting/concat_two_strings.sh).
 
 ```bash
@@ -111,3 +113,19 @@ fuckjakegt1@soulcatcher:~/projects/HowToLinux/03_Scripting/solutions$
 ```
 
 It may look slightly odd that the result comes straight before your terminal line, but that's because of how echo has been used - `echo -n` removes the new line character at the end of the output.
+
+After this, `./test.sh` should report one pass.
+
+# add.sh
+
+So, now we need to add. Doing maths in bash can be done by using `$(())`. So, for example:
+
+```bash
+MYVAR=1
+SOME_MATHS=$(($MYVAR + $MYVAR))
+echo -n "$SOME_MATHS"
+# 2
+```
+
+So, overall should be similar to `concat_two_strings.sh` - just with a little bit extra. You can use variables in `$(())` too, of course.
+
