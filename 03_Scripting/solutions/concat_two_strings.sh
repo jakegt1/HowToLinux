@@ -1,5 +1,5 @@
 #!/bin/bash
 
-RESULT=
+RESULT="$1$2"
 
 echo -n "$RESULT"
