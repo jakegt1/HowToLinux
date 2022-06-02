@@ -64,3 +64,50 @@ chmod 644 ./add.sh # Short form - 644: `rw-r--r--`. This is what it starts with.
 I find the short form much easier to understand, to be honest. You will almost always use 755 and 644, and ocasionally 600 or 400 when you want something that cannot be read by others (like an ssh key!)
 
 OK, let's try again..
+
+```bash
+jakegt1@soulcatcher:~/projects/HowToLinux/03_Scripting$ chmod 755 add.sh concat_two_strings.sh
+jakegt1@soulcatcher:~/projects/HowToLinux/03_Scripting$ ./test.sh
+ ✗ Concat two strings can concat two strings
+   (in test file test.sh, line 5)
+     `[ "$result" = "foobar" ]' failed
+ ✗ Add can add two
+   (in test file test.sh, line 10)
+     `[ "$result" -eq 8 ]' failed
+
+2 tests, 2 failures
+```
+
+Let's view [concat_two_strings.sh](../03_Scripting/concat_two_strings.sh).
+
+```bash
+#!/bin/bash
+
+RESULT=
+
+echo -n "$RESULT"
+```
+
+Right now, it doesn't really do anything, but it does at the least show how to set variables, and how to report them. Most bash scripts typically do this, they just output their result as a string to the shell.
+
+Arguments to a script themselves are special variables. These can be accessed by the number of the argument:
+
+```
+$0 - Name/path to script
+$1 - First argument
+$2 - Second argument
+$3 ...
+```
+
+Considering this, hopefully the `RESULT` variable in concat_two_strings.sh should be pretty self explanatory. As a note, you can put variables one after the other: `echo "$MYVAR$OTHERVAR"` is perfectly acceptable.
+
+You can test your code by executing it:
+
+```
+jakegt1@soulcatcher:~/projects/HowToLinux/03_Scripting/solutions$ ./concat_two_strings.sh foo bar
+foobarjakegt1@soulcatcher:~/projects/HowToLinux/03_Scripting/solutions$
+jakegt1@soulcatcher:~/projects/HowToLinux/03_Scripting/solutions$ ./concat_two_strings.sh fu ck
+fuckjakegt1@soulcatcher:~/projects/HowToLinux/03_Scripting/solutions$
+```
+
+It may look slightly odd that the result comes straight before your terminal line, but that's because of how echo has been used - `echo -n` removes the new line character at the end of the output.
