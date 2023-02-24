@@ -22,4 +22,4 @@ After this, you'll boot into the shell:
 
 ![Bash](./Shell.png)
 
-Then, it's time to access the first tutorial.: [01_Beginnings.md](./Terminallife/01_Beginnings.md)
+Then, it's time to access the first tutorial.: [01_Beginnings.md](./TerminalLife/01_Beginnings.md)
